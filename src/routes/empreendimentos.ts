@@ -21,4 +21,10 @@ router.get('/', EmpreendimentoController.getAll);
  */
 router.get('/:id', EmpreendimentoController.getById);
 
+/**
+ * PUT /api/empreendimentos/:id
+ * Atualizar um empreendimento
+ */
+router.put('/:id', EmpreendimentoController.update);
+
 export default router;
