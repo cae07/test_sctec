@@ -60,4 +60,82 @@ describe('EmpreendimentoController', () => {
       });
     });
   });
+
+   describe('obterTodos', () => {
+    it('deve retornar todos os empreendimentos', async () => {
+      const empreendimentos = [
+        {
+          id: '123',
+          nomeEmpreendimento: 'Empresa 1',
+          nomeEmpreendedor: 'João',
+          municipioSC: 'Florianópolis',
+          segmentoAtuacao: SegmentoAtuacao.TECNOLOGIA,
+          contatoEmail: 'joao@example.com',
+          status: Status.ATIVO,
+          dataCriacao: new Date(),
+          dataAtualizacao: new Date(),
+        },
+      ];
+
+      (EmpreendimentoService.getAll as jest.Mock).mockResolvedValue(empreendimentos);
+
+      const req = mockRequest() as Request;
+      const res = mockResponse() as Response;
+
+      await EmpreendimentoController.getAll(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({
+        sucesso: true,
+        dados: empreendimentos,
+        total: 1,
+      });
+    });
+  });
+
+  describe('obterPorId', () => {
+    it('deve retornar um empreendimento por ID', async () => {
+      const empreendimento = {
+        id: '123',
+        nomeEmpreendimento: 'Empresa 1',
+        nomeEmpreendedor: 'João',
+        municipioSC: 'Florianópolis',
+        segmentoAtuacao: SegmentoAtuacao.TECNOLOGIA,
+        contatoEmail: 'joao@example.com',
+        status: Status.ATIVO,
+        dataCriacao: new Date(),
+        dataAtualizacao: new Date(),
+      };
+
+      (EmpreendimentoService.getById as jest.Mock).mockResolvedValue(empreendimento);
+
+      const req = mockRequest() as any;
+      req.params = { id: '123' };
+      const res = mockResponse() as Response;
+
+      await EmpreendimentoController.getById(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({
+        sucesso: true,
+        dados: empreendimento,
+      });
+    });
+
+    it('deve retornar erro 404 quando empreendimento não existe', async () => {
+      (EmpreendimentoService.getById as jest.Mock).mockResolvedValue(undefined);
+
+      const req = mockRequest() as any;
+      req.params = { id: '999' };
+      const res = mockResponse() as Response;
+
+      await EmpreendimentoController.getById(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(404);
+      expect(res.json).toHaveBeenCalledWith({
+        sucesso: false,
+        mensagem: 'Empreendimento não encontrado',
+      });
+    });
+  });
 });
