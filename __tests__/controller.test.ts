@@ -290,4 +290,36 @@ describe('EmpreendimentoController', () => {
       });
     });
   });
+
+  describe('delete', () => {
+    it('deve deletar um empreendimento com sucesso', async () => {
+      (EmpreendimentoService.delete as jest.Mock).mockResolvedValue(undefined);
+
+      const req = mockRequest({}, { id: '123' }) as Request;
+      const res = mockResponse() as Response;
+
+      await EmpreendimentoController.delete(req, res);
+
+      expect(EmpreendimentoService.delete).toHaveBeenCalledWith('123');
+      expect(res.status).toHaveBeenCalledWith(204);
+      expect(res.send).toHaveBeenCalled();
+    });
+
+    it('deve retornar erro 500 quando falha ao deletar', async () => {
+      (EmpreendimentoService.delete as jest.Mock).mockRejectedValue(
+        new Error('Erro na conexão com o banco de dados'),
+      );
+
+      const req = mockRequest({}, { id: '123' }) as Request;
+      const res = mockResponse() as Response;
+
+      await EmpreendimentoController.delete(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.json).toHaveBeenCalledWith({
+        sucesso: false,
+        mensagem: 'Erro interno do servidor ao deletar empreendimento',
+      });
+    });
+  });
 });
