@@ -214,4 +214,38 @@ describe('EmpreendimentoService', () => {
       expect(resultado.dataCriacao).toEqual(empreendimentoExistente.dataCriacao);
     });
   });
+
+  describe('delete', () => {
+    it('deve deletar um empreendimento com sucesso', async () => {
+      (EmpreendimentoModel.dbConexion as jest.Mock).mockResolvedValue(undefined);
+
+      await EmpreendimentoService.delete('123');
+
+      expect(EmpreendimentoModel.dbConexion).toHaveBeenCalledWith(
+        expect.stringContaining('/empreendimentos/123'),
+        { method: 'DELETE' },
+      );
+    });
+
+    it('deve lançar erro quando falha ao deletar', async () => {
+      (EmpreendimentoModel.dbConexion as jest.Mock).mockRejectedValue(
+        new Error('Erro ao conectar ao banco de dados'),
+      );
+
+      await expect(EmpreendimentoService.delete('123')).rejects.toThrow(
+        'Erro ao conectar ao banco de dados',
+      );
+    });
+
+    it('deve chamar o endpoint correto com o ID', async () => {
+      (EmpreendimentoModel.dbConexion as jest.Mock).mockResolvedValue(undefined);
+
+      await EmpreendimentoService.delete('abc-123-xyz');
+
+      expect(EmpreendimentoModel.dbConexion).toHaveBeenCalledWith(
+        expect.stringContaining('abc-123-xyz'),
+        { method: 'DELETE' },
+      );
+    });
+  });
 });
