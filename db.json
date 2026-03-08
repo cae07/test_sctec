@@ -1,0 +1,37 @@
+{
+  "empreendimentos": [
+    {
+      "id": "1vxyf3qhf6",
+      "nomeEmpreendimento": "Tech Solutions Santa Catarina",
+      "nomeEmpreendedor": "Carlos Alberto Silva",
+      "municipioSC": "Blumenau",
+      "segmentoAtuacao": "Tecnologia",
+      "contatoEmail": "carlos@techsolutions.com",
+      "status": "ativo",
+      "dataCriacao": "2026-03-08T10:30:00.000Z",
+      "dataAtualizacao": "2026-03-08T10:30:00.000Z"
+    },
+    {
+      "id": "2vxyf3qhf7",
+      "nomeEmpreendimento": "Consultoria Estratégica",
+      "nomeEmpreendedor": "Ana Paula Ferreira",
+      "municipioSC": "Criciúma",
+      "segmentoAtuacao": "Serviços",
+      "contatoEmail": "ana@consultoria.com",
+      "status": "ativo",
+      "dataCriacao": "2026-03-07T14:20:00.000Z",
+      "dataAtualizacao": "2026-03-07T14:20:00.000Z"
+    },
+    {
+      "id": "3vxyf3qhf8",
+      "nomeEmpreendimento": "Comércio Local SC",
+      "nomeEmpreendedor": "Maria Santos Silva",
+      "municipioSC": "Joinville",
+      "segmentoAtuacao": "Comércio",
+      "contatoEmail": "maria@comercio.com",
+      "status": "ativo",
+      "dataCriacao": "2026-03-05T09:15:00.000Z",
+      "dataAtualizacao": "2026-03-05T09:15:00.000Z"
+    }
+  ]
+}
