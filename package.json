@@ -1,0 +1,11 @@
+{
+  "name": "teste_sctec",
+  "version": "1.0.0",
+  "description": "backend de tema empreendedorismo em sc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Caê Calçolari",
+  "license": "ISC"
+}
