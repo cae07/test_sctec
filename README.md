@@ -181,9 +181,9 @@ http://localhost:3000/api
   "nomeEmpreendimento": "Tech Solutions",
   "nomeEmpreendedor": "João Silva",
   "municipioSC": "Florianópolis",
-  "segmentoAtuacao": "TECNOLOGIA",
+  "segmentoAtuacao": "Tecnologia",
   "contatoEmail": "joao@example.com",
-  "status": "ATIVO"
+  "status": "ativo"
 }
 ```
 
