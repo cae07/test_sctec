@@ -94,4 +94,10 @@ export class EmpreendimentoService {
       body: JSON.stringify(empreendimentoAtualizado),
     });
   }
+
+  static async delete(id: string): Promise<void> {
+    await EmpreendimentoModel.dbConexion(`${EMPREENDIMENTOS_ENDPOINT}/${id}`, {
+      method: 'DELETE',
+    });
+  }
 }

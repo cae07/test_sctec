@@ -102,4 +102,20 @@ export class EmpreendimentoController {
       });
     }
   }
+
+  static async delete(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params as { id: string };
+
+      await EmpreendimentoService.delete(id);
+
+      res.status(204).send();
+    } catch (erro) {
+      console.error('Erro ao deletar empreendimento:', erro);
+      res.status(500).json({
+        sucesso: false,
+        mensagem: 'Erro interno do servidor ao deletar empreendimento',
+      });
+    }
+  }
 }

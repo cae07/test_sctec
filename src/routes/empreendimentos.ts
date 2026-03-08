@@ -27,4 +27,10 @@ router.get('/:id', EmpreendimentoController.getById);
  */
 router.put('/:id', EmpreendimentoController.update);
 
+/**
+ * DELETE /api/empreendimentos/:id
+ * Deletar um empreendimento
+ */
+router.delete('/:id', EmpreendimentoController.delete);
+
 export default router;
