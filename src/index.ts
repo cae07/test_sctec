@@ -19,9 +19,6 @@ app.get('/health', (_req, res) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
-  console.log(`POST /api/empreendimentos - Criar empreendimento`);
-  console.log(`GET /api/empreendimentos - Listar todos os empreendimentos`);
-  console.log(`GET /api/empreendimentos/:id - Obter empreendimento por ID`);
 });
 
 export default app;

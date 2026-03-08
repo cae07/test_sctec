@@ -96,7 +96,7 @@ JSON_SERVER_URL=http://localhost:4000
 4. **Inicie o JSON Server**
 ```bash
 # Em um terminal
-npm run json-server
+npm run server:db
 ```
 
 5. **Inicie a aplicação**
@@ -181,9 +181,9 @@ http://localhost:3000/api
   "nomeEmpreendimento": "Tech Solutions",
   "nomeEmpreendedor": "João Silva",
   "municipioSC": "Florianópolis",
-  "segmentoAtuacao": "TECNOLOGIA",
+  "segmentoAtuacao": "Tecnologia",
   "contatoEmail": "joao@example.com",
-  "status": "ATIVO"
+  "status": "ativo"
 }
 ```
 
