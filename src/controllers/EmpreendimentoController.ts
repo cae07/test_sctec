@@ -34,4 +34,49 @@ export class EmpreendimentoController {
       });
     }
   }
+
+  
+  static async getAll(_req: Request, res: Response): Promise<void> {
+    try {
+      const empreendimentos = await EmpreendimentoService.getAll();
+
+      res.status(200).json({
+        sucesso: true,
+        dados: empreendimentos,
+        total: empreendimentos.length,
+      });
+    } catch (erro) {
+      console.error('Erro ao obter empreendimentos:', erro);
+      res.status(500).json({
+        sucesso: false,
+        mensagem: 'Erro interno do servidor',
+      });
+    }
+  }
+
+  static async getById(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params as { id: string };
+      const empreendimento = await EmpreendimentoService.getById(id);
+
+      if (!empreendimento) {
+        res.status(404).json({
+          sucesso: false,
+          mensagem: 'Empreendimento não encontrado',
+        });
+        return;
+      }
+
+      res.status(200).json({
+        sucesso: true,
+        dados: empreendimento,
+      });
+    } catch (erro) {
+      console.error('Erro ao obter empreendimento:', erro);
+      res.status(500).json({
+        sucesso: false,
+        mensagem: 'Erro interno do servidor',
+      });
+    }
+  }
 }

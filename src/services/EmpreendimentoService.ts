@@ -22,4 +22,21 @@ export class EmpreendimentoService {
       body: JSON.stringify(empreendimento),
     });
   }
+
+  
+  static async getAll(): Promise<Empreendimento[]> {
+    return EmpreendimentoModel.dbConexion<Empreendimento[]>(EMPREENDIMENTOS_ENDPOINT, {
+      method: 'GET',
+    });
+  }
+
+  static async getById(id: string): Promise<Empreendimento | undefined> {
+    try {
+      return await EmpreendimentoModel.dbConexion<Empreendimento>(`${EMPREENDIMENTOS_ENDPOINT}/${id}`, {
+        method: 'GET',
+      });
+    } catch (_erro) {
+      return undefined;
+    }
+  }
 }
