@@ -1,5 +1,10 @@
 # Teste SCTEC - API de Empreendimentos
 
+Video de demostração do APP </br>
+<a href="https://https://youtu.be/8Kntevol0eg?si=Dc5-SEuoW90Pxapg">
+  <img src="https://img.shields.io/badge/YouTube-Assista_a_Demo-red?style=for-the-badge&logo=youtube" alt="Demo app no YouTube">
+</a>
+
 ## 📋 Índice
 
 - [Descrição](#descrição)
